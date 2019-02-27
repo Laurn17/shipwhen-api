@@ -4,7 +4,8 @@
   "description": "Shipwhen API",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --exit",
+    "start": "node server.js"
   },
   "author": "Lauren Morrow",
   "license": "ISC",
