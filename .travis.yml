@@ -1,6 +1,11 @@
- language: node_js
- node_js: node
- services:
-    - mongodb
-  env:
-    - CI=true   
+language: node_js
+node_js: node
+services:
+- mongodb
+deploy:
+  provider: heroku
+  api_key:
+    secure: F2YkrZljpdZp9Ds+T9sfSLof6ZmG84IugOCbzMNgWRyJ3asw3sJKBuT2ossKYOFVdMQKs/MbGVjlUvNU2PO7L3IBDnhkZBkIFMTsWXv0NqbxksUbHCejcSnuwNx9WBN8n2MXTj9qnDn2fXrL9KWUv8+gTPyqaZPeRw+7w/P8Z/1RBK2J9ltu3RV6hNdxF4m5Im+MS9GuitSUQtUJqNRXRoyq3rJpBVQlQULra3WRoeK+kK8teHPk033/n8NJl5Y76lTs5Zi8LjAF4Z1U79PztpSvjQWT2DjvguvljjN9uRE9YEdSxcYgVTrzree6NQmlELWOmZe+DAozE0il9HyBIaOMOAH9pSnQsONt0GK1/k/msez+muqueVmghg0Xdv51ndhlDu23M6N7p+04BeC6IuB4hTHWouh89jPmAIkV1rH4+6p7OHRKG7PE/u/BziqVzsrOBEyw2IHCtRm0U3EH6678phmEIhSVhjfi3Kb/+3gESfZ52iknlTVZGCnM3H6d5PN2acwVr4PT4ixjxfRtvZ1HjXi81huYarEU1iMajrD49A1iL01X4mgF9s2x5OsEZhRphNqPPWx9xGz1mfEy08vFigDfHMR2197mwIu4DvZLXlzhN+YysOeywztgaeSNzW/zfk9vYP4ziwWhdssE1fweGGSj5+R9HAKBVfRZA/Y=
+  app: fierce-woodland-85014
+  on:
+    repo: Laurn17/shipwhen-api
