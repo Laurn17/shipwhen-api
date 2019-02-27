@@ -1,24 +1,19 @@
  const express = require('express');
  const app = express();
+ var cors = require('cors');
+ const {CLIENT_ORIGIN} = require('./config');
 
+// My port is now in config.js, can delete this once i re-do line 20
  const PORT = process.env.PORT || 3000;
 
 // CORS FUNCTION
-app.use(function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization');
-  res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE');
-  if (req.method === 'OPTIONS') {
-    return res.send(204);
-  }
-  next();
-});
+app.use(
+    cors({
+        origin: CLIENT_ORIGIN
+    })
+);
 
-app.use('*', (req, res) => {
-  return res.status(404).json({ message: 'Not Found' });
-});
-
- app.get("/", (req, res) => {
+ app.get('/api/*', (req, res) => {
    res.json({ok: true});
  });
 
