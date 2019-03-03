@@ -5,7 +5,7 @@ services:
 deploy:
   provider: heroku
   api_key:
-    secure: mQa0oor71mw4MvWuK4yzoZ9W7awIRLVr649qilDpq72qav3GLITqPsggjED3PAHF7mLaDJ2jrJyMfXGy9TV+TAA01BcRs2E754kf961cd2YYQJ0XSiLWFUdybgQM5Z8Maber2AQEoAWHqWfl2UqjyyCNOhXQfcqKTPWCVPF7uishosNqMETa9ll+K1mSD2uj/P218jsCspMAwbrMqutgzTvgCbDA6gx1Xelmt0wKF2Siqdv//2iY1gbS/AwRfqBlTmT22lm3ZKSnMuX6gSg8NrYH3i1kquRfcUs1rgGajz3K4jfraioP7NWhK5VxvHTSwWP/x8PXwBLwaBcFCMp5yaOA4LJ62OH6yBlW9XdxEtzj6e++h/cGQ+OZ5ti/zYSSbB/stTx9fcdPbmLT4zURERh026JySguJc8vP7fDm5AAGu192sZ/yUHQmBH6Z5MZwwBrVtSF4Nk4wdI2W9+Cbm70uzOeMUaWbjVAkdRoUKVPts5zJhzK8eH2qlzP1pm4/8QyIpl0hnZzCR+jaA+Sp2XG/HOc07Y4HdezS2EYTexCx60/HFSmB/ctkiSi2gVCowOyU0k3seYrrMW/IT+Lb7QEDTf0yCCh58uneFIuHjEvC239upm0e3MT0OA6jh5L+naNb9txPb5QN6v/+hOfU58PiguNzNSq8O0nq91uSucU=
+    secure: 0ba312e2-280b-4a6a-b331-441a9ea45052
   app: fast-ravine-97442
   on:
     repo: Laurn17/shipwhen-api
