@@ -13,7 +13,11 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // CORS FUNCTION
-app.use(cors());
+app.use(
+    cors({
+        origin: CLIENT_ORIGIN
+    })
+);
 
  app.get('/api/*', (req, res) => {
    res.json({ok: true});
