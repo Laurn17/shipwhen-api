@@ -1,11 +1,8 @@
 'use strict';
 const express = require('express');
 const bodyParser = require('body-parser');
-
 const {User} = require('./models');
-
 const router = express.Router();
-
 const jsonParser = bodyParser.json();
 
 // Post to register a new user
@@ -62,7 +59,7 @@ router.post('/', jsonParser, (req, res) => {
       min: 1
     },
     password: {
-      min: 8,
+      min: 7,
       // bcrypt truncates after 72 characters, so let's not give the illusion
       // of security by storing extra (unused) info
       max: 72
