@@ -9,6 +9,7 @@ const passport = require('passport');
 
 const { router: usersRouter } = require('./users');
 const { router: authRouter, localStrategy, jwtStrategy } = require('./auth');
+const { router: reviewsRouter } = require('./reviews')
 
 mongoose.Promise = global.Promise;
 
@@ -16,6 +17,9 @@ const { PORT, DATABASE_URL } = require('./config');
 
 //Logging
 app.use(morgan('common'));
+
+app.use(express.json());
+app.use(express.static("public"));
 
 // CORS
 app.use(function (req, res, next) {
@@ -28,33 +32,28 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.use(express.json());
-app.use(express.static("public"));
 
 passport.use(localStrategy);
 passport.use(jwtStrategy);
 
 app.use('/api/users/', usersRouter);
 app.use('/api/auth/', authRouter);
+app.use(reviewsRouter);
 
 
 const jwtAuth = passport.authenticate('jwt', { session: false });
 
 // A protected endpoint which needs a valid JWT to access it
-app.get('/api/protected', jwtAuth, (req, res) => {
-  return res.json({
-    data: 'rosebud'
-  });
-});
+// app.get('/api/protected', jwtAuth, (req, res) => {
+//   return res.json({
+//     data: 'rosebud'
+//   });
+// });
 
 app.use('*', (req, res) => {
   return res.status(404).json({ message: 'Not Found' });
 });
 
-
- app.get('/*', (req, res) => {
-   res.json({ok: true});
- });
 
  
 let server;
