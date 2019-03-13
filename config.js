@@ -1,6 +1,6 @@
 'use strict';
 
-exports.DATABASE_URL = process.env.DATABASE_URL || 'mongodb://localhost/shipwhen-api';
+exports.DATABASE_URL = process.env.DATABASE_URL || 'mongodb+srv://new-user:1Redhead7@shipwhen-api-ki8b9.mongodb.net/shipwhen-api?retryWrites=true';
 exports.TEST_DATABASE_URL = process.env.TEST_DATABASE_URL || 'mongodb://localhost/test-shipwhen-api';
 exports.PORT = process.env.PORT || 8080;
 exports.JWT_SECRET = process.env.JWT_SECRET;

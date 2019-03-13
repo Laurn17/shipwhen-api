@@ -10,9 +10,9 @@ const {Review} = require('./models');
 router.use(bodyParser.json());
 
 // GET BY BUSNAME
-router.get('/api/reviews', jwtAuth, (req, res) => {
+router.get('/api/reviews/:bus_name', jwtAuth, (req, res) => {
   return Review
-    .find({bus_name: req.data})
+    .find({bus_name: req.params.bus_name})
     .then(function(review) {
      	res.json(review.map(review => review.serialize()));
     })

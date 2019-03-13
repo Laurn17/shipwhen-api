@@ -5,7 +5,7 @@ mongoose.Promise = global.Promise;
 
 // MY RETURNED REVIEW SCHEMA 
 const reviewSchema = mongoose.Schema({
-	date_created: {type: Date, default: Date.now},
+	date_created: {type: Date, default: Date.now()},
 	bus_name: {type: String, required: true},
 	delivery: {type: String, required: true},
 	order_date: {type: Date, required: true},
