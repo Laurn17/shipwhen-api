@@ -10,9 +10,19 @@ const {Review} = require('./models');
 router.use(bodyParser.json());
 
 // GET BY BUSNAME
-router.get('/api/reviews/:bus_name', jwtAuth, (req, res) => {
+router.get('/api/reviews/:bus_name', (req, res) => {
   return Review
-    .find({bus_name: req.params.bus_name})
+    .find({bus_name: req.params.bus_name}).populate('created_by')
+    // Im trying to say that if the review is empty, dont send anything...
+    // .then (function(review) {
+    //     if (review === "") {
+    //      res.status(404)        // HTTP status 404: NotFound
+    //       .send('Not found').end();
+    //     }
+    //     else {
+    //       return res.json(review);
+    //     }
+    // })
     .then(function(review) {
      	res.json(review.map(review => review.serialize()));
     })
