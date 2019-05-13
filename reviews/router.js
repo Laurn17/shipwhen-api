@@ -45,34 +45,35 @@ router.get('/api/reviews/:bus_name', (req, res) => {
 //     });
 // });
 
-// // CREATE BY SEASON
-// router.post('api/reviews', jwtAuth, (req, res) => {
-// 	const requiredFields = ['season', 'name', 'plantBy', 'username'];
-// 	for (let i = 0; i < requiredFields.length; i++) {
-// 		const field = requiredFields[i];
-// 		if (!(field in req.body)) {
-// 			const message = `Missing ${field} in request body`;
-// 			console.error(message);
-// 			return res.status(400).send(message);
-// 		}
-// 	}
-// 	Produce
-// 	    .create({
-// 	    	season: req.body.season,
-// 	    	name: req.body.name,
-// 	    	germinateIndoors: req.body.germinateIndoors,
-// 			seedOrPlant: req.body.seedOrPlant,
-// 			plantBy: req.body.plantBy,
-// 			datePlanted: req.body.datePlanted
-//    		 })
-// 	    .then(function(produce) {
-// 	    	res.status(201).json(produce.serialize())
-// 	    })
-// 	    .catch(function(err) {
-// 	      console.error(err);
-// 	      res.status(500).json({ message: 'Internal server error' });
-// 	    });
-// });
+// CREATE BY SEASON
+router.post('/api/reviews', (req, res) => {
+	const requiredFields = ['bus_name', 'delivery', 'order_date', 'estimate_date'];
+	for (let i = 0; i < requiredFields.length; i++) {
+		const field = requiredFields[i];
+		if (!(field in req.body)) {
+			const message = `Missing ${field} in request body`;
+			console.error(message);
+			return res.status(400).send(message);
+		}
+	}
+	Review
+	    .create({
+        date_created: Date.now(),
+	    	bus_name: req.body.bus_name,
+	    	delivery: req.body.delivery,
+	    	order_date: req.body.order_date,
+			  estimate_date: req.body.estimate_date,
+			  arrive: req.body.arrive,
+			  arrive_date: req.body.arrive_date
+   		 })
+	    .then(function(review) {
+	    	res.status(201).json(review.serialize())
+	    })
+	    .catch(function(err) {
+	      console.error(err);
+	      res.status(500).json({ message: 'Internal server error' });
+	    });
+});
 
 // // DELETE
 // router.delete('/:id', jwtAuth, (req, res) => {

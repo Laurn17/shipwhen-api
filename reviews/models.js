@@ -5,14 +5,14 @@ mongoose.Promise = global.Promise;
 
 // MY RETURNED REVIEW SCHEMA 
 const reviewSchema = mongoose.Schema({
-	date_created: {type: Date, default: Date.now()},
-	bus_name: {type: String, required: true},
-	delivery: {type: String, required: true},
-	order_date: {type: Date, required: true},
-	estimate_date: {type: Date, required: true},
+  date_created: {type: Date, default: Date.now()},
+  bus_name: {type: String, required: true},
+  delivery: {type: String, required: true},
+  order_date: {type: Date, required: true},
+  estimate_date: {type: Date, required: true},
   arrive: {type: Boolean},
-	arrive_date: {type: Date},
-	created_by: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
+  arrive_date: {type: Date},
+  created_by: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
 });
 
 
@@ -33,5 +33,3 @@ reviewSchema.methods.serialize = function() {
 
 const Review = mongoose.model('Review', reviewSchema);
 module.exports = {Review};
-
-
