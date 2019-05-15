@@ -12,7 +12,7 @@ const reviewSchema = mongoose.Schema({
   estimate_date: {type: Date, required: true},
   arrive: {type: Boolean},
   arrive_date: {type: Date},
-  created_by: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
+  created_by: {type: String}
 });
 
 
@@ -27,7 +27,7 @@ reviewSchema.methods.serialize = function() {
     estimate_date: this.estimate_date.toDateString(),
     arrive: this.arrive,
     arrive_date: this.arrive_date.toDateString(),
-    created_by: this.created_by.username
+    created_by: this.created_by
   };
 };
 

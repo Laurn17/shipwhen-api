@@ -4,8 +4,11 @@ const router = express.Router();
 const jsonParser = bodyParser.json();
 const passport = require('passport');
 const jwtAuth = passport.authenticate('jwt', {session: false});
+// var mongoose = require('mongoose');
+
 
 const {Review} = require('./models');
+const {User} = require('../users/models');
 
 router.use(bodyParser.json());
 
@@ -57,22 +60,24 @@ router.post('/api/reviews', (req, res) => {
 		}
 	}
 	Review
-	    .create({
-        date_created: Date.now(),
-	    	bus_name: req.body.bus_name,
-	    	delivery: req.body.delivery,
-	    	order_date: req.body.order_date,
-			  estimate_date: req.body.estimate_date,
-			  arrive: req.body.arrive,
-			  arrive_date: req.body.arrive_date
-   		 })
-	    .then(function(review) {
-	    	res.status(201).json(review.serialize())
-	    })
-	    .catch(function(err) {
-	      console.error(err);
-	      res.status(500).json({ message: 'Internal server error' });
-	    });
+		.create({
+		    date_created: Date.now(),
+			bus_name: req.body.bus_name,
+			delivery: req.body.delivery,
+			order_date: req.body.order_date,
+			estimate_date: req.body.estimate_date,
+			arrive: req.body.arrive,
+			arrive_date: req.body.arrive_date,
+		    created_by: req.body.user
+		})
+		.then(function(review) {
+			res.status(201).json(review.serialize())
+		})
+		.catch(function(err) {
+			console.error(err);
+			res.status(500).json({ message: 'Internal server error' });
+		});
+	
 });
 
 // // DELETE
