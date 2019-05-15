@@ -15,7 +15,7 @@ router.use(bodyParser.json());
 // GET BY BUSNAME
 router.get('/api/reviews/:bus_name', (req, res) => {
   return Review
-    .find({bus_name: req.params.bus_name}).populate('created_by')
+    .find({bus_name: req.params.bus_name})
     // Im trying to say that if the review is empty, dont send anything...
     // .then (function(review) {
     //     if (review === "") {
