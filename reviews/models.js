@@ -20,13 +20,13 @@ const reviewSchema = mongoose.Schema({
 reviewSchema.methods.serialize = function() {
   return {
     id: this._id,
-    date_created: this.date_created.toDateString(),
+    date_created: this.date_created.toDateString().split(' ').slice(1).join(' '),
     bus_name: this.bus_name,
     delivery: this.delivery,
-    order_date: this.order_date.toDateString(),
-    estimate_date: this.estimate_date.toDateString(),
+    order_date: this.order_date.toDateString().split(' ').slice(1).join(' '),
+    estimate_date: this.estimate_date.toDateString().split(' ').slice(1).join(' '),
     arrive: this.arrive,
-    arrive_date: this.arrive_date.toDateString(),
+    arrive_date: this.arrive_date ? this.arrive_date.toDateString().split(' ').slice(1).join(' ') : null,
     created_by: this.created_by
   };
 };
