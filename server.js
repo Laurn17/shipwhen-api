@@ -2,6 +2,7 @@
 
 require('dotenv').config();
 const express = require('express');
+const path = require('path');
 const app = express();
 const morgan = require('morgan');
 const mongoose = require('mongoose');
@@ -15,11 +16,12 @@ mongoose.Promise = global.Promise;
 
 const { PORT, DATABASE_URL } = require('./config');
 
+
 //Logging
 app.use(morgan('common'));
 
 app.use(express.json());
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, 'build')));
 
 // CORS
 app.use(function (req, res, next) {
@@ -43,16 +45,9 @@ app.use(reviewsRouter);
 
 const jwtAuth = passport.authenticate('jwt', { session: false });
 
-// A protected endpoint which needs a valid JWT to access it
-// app.get('/api/protected', jwtAuth, (req, res) => {
-//   return res.json({
-//     data: 'rosebud'
-//   });
-// });
-
-app.use('*', (req, res) => {
-  return res.status(404).json({ message: 'Not Found' });
-});
+app.get('/*', function (req, res) {
+   res.sendFile(path.join(__dirname, 'build', 'index.html'));
+ });
 
 
  
