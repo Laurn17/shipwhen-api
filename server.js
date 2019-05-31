@@ -44,17 +44,6 @@ app.use(reviewsRouter);
 
 const jwtAuth = passport.authenticate('jwt', { session: false });
 
-// A protected endpoint which needs a valid JWT to access it
-// app.get('/api/protected', jwtAuth, (req, res) => {
-//   return res.json({
-//     data: 'rosebud'
-//   });
-// });
-
-// app.use('*', (req, res) => {
-//   return res.status(404).json({ message: 'Not Found' });
-// });
-
 if (process.env.NODE_ENV === 'production') {
   // Serve any static files
   app.use(express.static(path.join(__dirname, 'shipwhen-client/build')));
