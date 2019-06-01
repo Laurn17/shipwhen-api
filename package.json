@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "Shipwhen API",
   "main": "index.js",
+  "url":"www.shipwhen.com",
+
   "scripts": {
     "test": "mocha --exit",
     "start": "node server.js"
