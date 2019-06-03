@@ -7,6 +7,7 @@ const app = express();
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const passport = require('passport');
+const forceDomain = require('forcedomain');
 
 const { router: usersRouter } = require('./users');
 const { router: authRouter, localStrategy, jwtStrategy } = require('./auth');
@@ -20,7 +21,10 @@ const { PORT, DATABASE_URL } = require('./config');
 app.use(morgan('common'));
 
 app.use(express.json());
-app.use(express.static("public"));
+app.use(forceDomain({
+  hostname: 'www.shipwhen.com'
+}));
+// app.use(express.static("public"));
 
 // CORS
 app.use(function (req, res, next) {
