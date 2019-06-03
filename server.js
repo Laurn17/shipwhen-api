@@ -7,7 +7,6 @@ const app = express();
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const passport = require('passport');
-var ua  = require('express-mobile-redirect');
 
 const { router: usersRouter } = require('./users');
 const { router: authRouter, localStrategy, jwtStrategy } = require('./auth');
@@ -21,7 +20,6 @@ const { PORT, DATABASE_URL } = require('./config');
 app.use(morgan('common'));
 
 app.use(express.json());
-app.use(ua.mobileredirect('http://www.shipwhen.com'));
 
 // CORS
 app.use(function (req, res, next) {
@@ -49,6 +47,9 @@ if (process.env.NODE_ENV === 'production') {
   // Serve any static files
   app.use(express.static(path.join(__dirname, 'client/build')));
 // Handle React routing, return all requests to React app
+  app.get('/*', function(req, res) {
+      res.redirect("www.shipwhen.com");
+  });
   app.get('/*', function(req, res) {
     res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
   });
