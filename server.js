@@ -21,8 +21,8 @@ const { PORT, DATABASE_URL } = require('./config');
 app.use(morgan('common'));
 
 app.use(express.json());
-app.all(forceDomain({
-  hostname: 'http://www.shipwhen.com'
+app.use(forceDomain({
+  hostname: 'https://www.shipwhen.com'
 }));
 // app.use(express.static("public"));
 
