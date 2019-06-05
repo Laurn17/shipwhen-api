@@ -37,7 +37,7 @@ router.post('/api/reviews', (req, res) => {
 	Review
 		.create({
 		    date_created: Date.now(),
-			bus_name: req.body.bus_name,
+			bus_name: req.body.name,
 			delivery: req.body.delivery,
 			order_date: req.body.order_date,
 			estimate_date: req.body.estimate_date,
