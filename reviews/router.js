@@ -23,6 +23,20 @@ router.get('/api/reviews/:bus_name', (req, res) => {
     });
 });
 
+// GET REVIEWS BY USERNAME
+router.get('/api/myreviews/:username', (req, res) => {
+  console.log(req.params.username);
+  return Review
+    .find({created_by: req.params.username})
+    .then(function(review) {
+     	res.json(review.map(review => review.serialize()));
+    })
+    .catch(function(err) {
+     	console.error(err);
+     	res.status(500).json({ error: 'something went terribly wrong' });
+    });
+});
+
 // CREATE BY BUS_NAME
 router.post('/api/reviews', (req, res) => {
 	const requiredFields = ['bus_name', 'delivery', 'order_date', 'estimate_date'];
@@ -54,19 +68,6 @@ router.post('/api/reviews', (req, res) => {
 		});
 	
 });
-
-// // GET ALL REVIEWS BY USERNAME
-// router.get('/api/reviews/:username', (req, res) => {
-//   return Review
-//     .find({created_by: req.body.user})
-//     .then(function(reviews) {
-//      	res.json(reviews.map(review => review.serialize()));
-//     })
-//     .catch(function(err) {
-//      	console.error(err);
-//      	res.status(500).json({ error: 'something went terribly wrong' });
-//     });
-// });
 
 
 module.exports = {router};
