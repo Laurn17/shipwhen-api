@@ -25,7 +25,6 @@ router.get('/api/reviews/:bus_name', (req, res) => {
 
 // GET REVIEWS BY USERNAME
 router.get('/api/myreviews/:username', (req, res) => {
-  console.log(req.params.username);
   return Review
     .find({created_by: req.params.username})
     .then(function(review) {
@@ -51,7 +50,7 @@ router.post('/api/reviews', (req, res) => {
 	Review
 		.create({
 		    date_created: Date.now(),
-			bus_name: req.body.name,
+			bus_name: req.body.bus_name,
 			delivery: req.body.delivery,
 			order_date: req.body.order_date,
 			estimate_date: req.body.estimate_date,
@@ -68,6 +67,5 @@ router.post('/api/reviews', (req, res) => {
 		});
 	
 });
-
 
 module.exports = {router};
